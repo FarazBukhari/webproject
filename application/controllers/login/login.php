@@ -36,14 +36,14 @@ public function linkedin()
 public function join()
 {
 	$data['heading'] = "Login";
-	$this->load->view('Join/join', $data);	
+	$this->load->view('join/join', $data);	
 }
 public function country()
 {
 	$data['heading'] = "Countries";
 	$this->load->view('common/header',$data);
 	$this->load->view('common/header1',$data);
-	$this->load->view('Country/country', $data);
+	$this->load->view('country/country', $data);
 	$this->load->view('common/footer',$data);
 }
 public function signin()
@@ -78,14 +78,14 @@ public function password()
 	$data['heading'] = "Forget password";
 	$this->load->view('common/header',$data);
 	$this->load->view('common/header1',$data);
-	$this->load->view('Password/password', $data);
+	$this->load->view('password/password', $data);
 }
 public function agreement()
 {
 	$data['heading'] = "Countries";
 	$this->load->view('common/header',$data);
 	$this->load->view('common/header1',$data);
-	$this->load->view('Agreement/agreement', $data);	
+	$this->load->view('agreement/agreement', $data);	
 }
 public function imageupload()
 {
@@ -103,7 +103,7 @@ public function registered()
 	$data['heading'] = "Already registered?";
 	$this->load->view('common/header',$data);
 	$this->load->view('common/header1',$data);
-	$this->load->view('Join/alreadyregistered', $data);
+	$this->load->view('join/alreadyregistered', $data);
 }
 
 public function search()
@@ -123,10 +123,10 @@ public function profile()
 	$this->load->view('common/header',$data);
 	$this->load->view('common/login-header',$data);
 	if($_SESSION['superusername'] == $_SESSION['hello']){
-		$this->load->view('After/after', $data);
+		$this->load->view('after/after', $data);
 	}
 	else{
-		$this->load->view('Profile/profile', $data);
+		$this->load->view('profile/profile', $data);
 	}
 }
 
@@ -136,7 +136,7 @@ public function notification()
 	$data['heading'] = "Notifications";
 	$this->load->view('common/header',$data);
 	$this->load->view('common/login-header',$data);
-	$this->load->view('Notification/notification', $data);
+	$this->load->view('notification/notification', $data);
 	$this->load->view('common/footer',$data);
 
 }
@@ -146,7 +146,7 @@ public function requests(){
 	$data['heading'] = "Friend Requests";
 	$this->load->view('common/header',$data);
 	$this->load->view('common/login-header',$data);
-	$this->load->view('Notification/requests', $data);
+	$this->load->view('notification/requests', $data);
 	$this->load->view('common/footer',$data);
 }
 
@@ -164,7 +164,7 @@ public function invite(){
 	$data['heading'] = "Invite to Connect";
 	$this->load->view('common/header',$data);
 	$this->load->view('common/login-header',$data);
-	$this->load->view('Addfriend/invite1', $data);
+	$this->load->view('addfriend/invite1', $data);
 
 }
 
