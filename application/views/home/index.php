@@ -78,9 +78,23 @@
 						$tcomments = $this->db->get('comments');
 						if($tcomments->num_rows > 0){
 							foreach ($tcomments->result_array() as $row5){
-								echo "<div class = 'com'>";
-								echo "<img src='$fulltarget' class = 'compic'>" . $fname . " " . $lname . "  " . $row5['comment'];
-								echo "</div>";
+
+								$this->db->where('username', $row5['userid']);
+								$scomments = $this->db->get('users');
+								foreach ($scomments->result_array() as $row6) {
+									//echo $row6['username'] . " ";
+									echo "<div class = 'com'>";
+									echo "<img src='" . $row6['Picture'] . "' class = 'compic'>" . $row6['fname'] . " " . $row6['lname'] . "  " . $row5['comment'];
+									echo "</div>";
+
+								}
+								
+								// foreach ($scomments->result_array() as $row6){
+									// echo "<div class = 'com'>";
+									// echo "<img src='" . $row6['Picture'] . "' class = 'compic'>" . $sfname . " " . $slname . "  " . $row5['comment'];
+									// echo "</div>";
+								// }
+								
 							}
 						}
 						echo "<textarea name='postComment'  rows='2' cols='40' class='comment-text' placeholder='Write a comment...''></textarea>";
