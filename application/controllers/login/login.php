@@ -49,13 +49,13 @@ public function country()
 public function signin()
 {
 	$data['heading'] = "SignIn";
-	$this->load->view('Signin/signin', $data);
+	$this->load->view('signin/signin', $data);
 }
 
 public function signinerror()
 {
 	$data['heading'] = "SignIn";
-	$this->load->view('Signin/signinerror', $data);
+	$this->load->view('signin/signinerror', $data);
 }
 
 public function after()
@@ -63,14 +63,14 @@ public function after()
 	$data['heading'] = "After";
 	$this->load->view('common/header',$data);
 	$this->load->view('common/login-header',$data);
-	$this->load->view('After/after', $data);
+	$this->load->view('after/after', $data);
 	$this->load->view('common/footer',$data);
 }
 
 public function login()
 {
 	$data['heading'] = "LogIn";
-	$this->load->view('Login/login', $data);
+	$this->load->view('login/login', $data);
 }
 
 public function password()
