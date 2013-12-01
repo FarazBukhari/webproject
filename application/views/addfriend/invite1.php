@@ -44,7 +44,7 @@
 		</ul>
 	</div>
 	<div class="iwrite"><div class="iwrite-in">
-		
+
 		<h1>Invite <strong><?php echo $fname1; ?></strong> to connect on LinkedIn</h1>
 		<div class="ipaper"><div class="ipaper-in">
 			<div class="wrap">
@@ -214,9 +214,9 @@
 													<p class="shabana"><span class="error">Important:</span> Only invite people you know well and who know you. <a class="" href="/static?key=pop%2Fpop_more_iwe_invitations" onclick="LI.popup( '/static?key=pop%2Fpop_more_iwe_invitations', {} ); return false;" title="New window will open">Find out why.</a>
 													</p><p class="shabana">
 													<?php echo "	<a href="; echo base_url('index.php/login/login/addfriend');echo "?id1=";echo $_GET['id1']; echo "&id2="; echo $_GET['id2'];echo "&fname="; echo $fname1; echo ">";
-														  // echo "	<a href="; echo base_url('index.php/login/login/addfriend');echo "?id1=";echo $_SESSION['hello']; echo "&id2="; echo $_SESSION['superusername'];echo "&fname="; echo $fname1; echo ">";
-														echo "<button class='btn-primary' type='submit' id='btn-submit'><div>Send Invitation</div></button>";
-														echo "</a>"; echo "or"; echo "	<a href="; echo base_url('index.php/login/login/profile');echo "?username=";echo $_GET['id2']; echo "&fname="; echo $fname;echo "&myid="; echo $_SESSION['result']; echo ">"; echo "Cancel</a>" ?>
+// echo "	<a href="; echo base_url('index.php/login/login/addfriend');echo "?id1=";echo $_SESSION['hello']; echo "&id2="; echo $_SESSION['superusername'];echo "&fname="; echo $fname1; echo ">";
+													echo "<button class='btn-primary' type='submit' id='btn-submit'><div>Send Invitation</div></button>";
+													echo "</a>"; echo "or"; echo "	<a href="; echo base_url('index.php/login/login/profile');echo "?username=";echo $_GET['id2']; echo "&fname="; echo $fname;echo "&myid="; echo $_SESSION['result']; echo ">"; echo "Cancel</a>" ?>
 													<!-- <input type="submit" name="iweReconnectSubmit" value="Send Invitation" class="btn-primary"> or <a href="/profile/view?id=191679546&amp;authType=name&amp;authToken=cOJg&amp;trk=nmp_pymk_name&amp;goback=">Cancel</a> -->
 												</p>
 											</div></div>

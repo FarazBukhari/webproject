@@ -372,7 +372,7 @@ a.logo1:active {
 	color: white;
 }
 
-#menu {
+.wrapper #menu {
 	position: relative;
 	margin:0 auto;
 	display: inline-block;
@@ -392,6 +392,7 @@ a.logo1:active {
 }
 
 #drop{
+	display: block;
 	background-color: #1a1a1a;
 }
 
@@ -412,7 +413,7 @@ a.logo1:active {
 	width: 203;
 }
 
-#menu, #menu ul {
+#menu ul {
 	margin:0 auto;
 	padding:0;
 	height: 28px;

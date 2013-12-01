@@ -1,30 +1,30 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /* Author: Jorge Torres
- * Description: Login model class
- */
+* Description: Login model class
+*/
 class Login_model extends CI_Model{
 	function __construct(){
 		parent::__construct();
 	}
-	
+
 	public function validate(){
-		// grab user input
+// grab user input
 		$username = $this->security->xss_clean($this->input->post('username'));
 		$password = $this->security->xss_clean($this->input->post('password'));
-		
-		// Prep the query
+
+// Prep the query
 		$this->db->where('username', $username);
 		$this->db->where('password', $password);
-		
-		// Run the query
+
+// Run the query
 		$query = $this->db->get('users');
-		// Let's check if there are any results
+// Let's check if there are any results
 		if($query->num_rows == 1)
 		{
-			// If there is a user, then create session data
+// If there is a user, then create session data
 			$row = $query->row();
 			$data = array(
-					//'userid' => $row->userid,
+//'userid' => $row->userid,
 				'fname' => $row->fname,
 				'lname' => $row->lname,
 				'username' => $row->username,
@@ -33,14 +33,12 @@ class Login_model extends CI_Model{
 			$this->session->set_userdata($data);
 			return $username;
 		}
-		// If the previous process did not validate
-		// then return false.
+// If the previous process did not validate
+// then return false.
 		return false;
 	}
 
 	public function addf(){
-		// echo $_GET['id1'];
-		// echo $_GET['id2'];
 		$data['sender'] = $_GET['id1'];
 		$data['reciever'] = $_GET['id2'];
 		$data['status']="pending";
@@ -48,9 +46,66 @@ class Login_model extends CI_Model{
 		return true;
 	}
 
+	public function imgup()
+	{
+		session_start();
+		if(isset($_POST['sub']))
+		{
+
+
+			$name=$_FILES['img']['name'];
+			$type=$_FILES['img']['type'];
+
+			$size=($_FILES['img']['size'])/1024;
+
+			$temp=explode('.',$name);
+			$ext=end($temp);
+			if (($ext == "gif")
+				|| ($ext == "jpeg")
+				|| ($ext == "jpg")
+				|| ($ext =="png")
+				&& ($size > 30))
+			{
+
+##############################File Renaming ###################################################
+
+
+				$newname=uniqid();
+				$fullname=$newname.".".$ext;
+				$target="upload/images/";
+				$fulltarget=$target.$fullname;
+
+				$result = $_SESSION['result'];
+
+
+				if(move_uploaded_file($_FILES['img']['tmp_name'], $fulltarget)) {
+
+					echo "The file ".  basename( $_FILES['img']['name']). 
+					" has been uploaded";
+				}
+
+				else{
+					echo "There was an error uploading the file, please try again!";
+				}
+				echo $fulltarget;
+				$_SESSION['target'] = $fulltarget;
+
+				$hi=$_FILES['img']['name'];
+
+				$this->db->where('username', $result);
+				$this->db->set('Picture', $fulltarget);
+				$this->db->update('users');
+
+
+
+				header("Location: http://localhost:8080/Codeigniter-bootstrap--master/index.php/login/login/after");
+
+
+			}
+		}
+	}
+
 	public function acceptinvite(){
-		// echo $_GET['id1'];
-		// echo $_GET['id2'];
 		$data['sender'] = $_GET['id1'];
 		$data['reciever'] = $_GET['id2'];
 		$data['status']="ok";
@@ -67,10 +122,7 @@ class Login_model extends CI_Model{
 
 
 	public function newsfeed(){
-		// require('db.php');
-		/**
-		* Adding News for Demo request by applying check on addnews POST parameter
-		**/
+
 		date_default_timezone_set('Asia/Karachi');
 		$date = date('Y-m-d H:i:s');
 		$data['usersId'] = $_SESSION['result'];
@@ -81,17 +133,6 @@ class Login_model extends CI_Model{
 
 		$this->db->insert('newsfeed', $data);
 		return true;
-		// if(isset($_POST['addnews'])){
-		
-		// 	$news = filter_input(INPUT_POST, 'news', FILTER_SANITIZE_SPECIAL_CHARS);
-		// 	$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
-		// 	$this->db->insert('newsfeed', $news);
-		// 	$this->db->set('status', $news);
-		// 	$this->db->set('time', $date);
-
-		// 	$sql = "INSERT INTO newsfeed (description, name, date) VALUES ('".$news."', '".$name."', '".date('Y-m-d H:i:s')."')";
-		// 	mysql_query($sql);
-		// }
 	}
 
 
@@ -113,70 +154,33 @@ class Login_model extends CI_Model{
 
 	}
 
-
-	public function getNewsFeed(){
-
-		
-	}
-
 	public function getNewsFeed1(){
 
-		//$this->db->get('reciever');
-
-		//echo $safe_tag;//debugging
 		$table = 'users';
-     	//$this->db->get('');
-        // $this->db->join('friendlist', 'users.username = friendlist.sender');
-        // $this->db->join('newsfeed', 'friendlist.sender = newsfeed.usersId');
-        // $this->db->where('friendlist.sender', $_SESSION['result']);
 		$this->db->select('reciever');
-		//$this->db->from('friendlist');
 		$this->db->where('sender',$_SESSION['result']);
 		$this->db->where('status','ok');
-		//$subQuery = $this->db->_compile_select();
 		$query=$this->db->get('friendlist');
 		$row = $query->row_array();
 		$array = null; 
 		foreach ($query->result() as $row)
 		{
 			$array[]=$row;
-			
-			
+
+
 		}
 
 		$json = json_encode($array);
 		echo $json;
-		// $this->db->from('friendlist');
-  //       $this->db->where('sender',$_SESSION['result']);
-  //       $this->db->where('status','ok');
-  		 //$f=$this->db->get('friendlist');
-  		// echo $f->num_rows;
-
-
 		$this->db->_reset_select();
-        //$name= array('fahim@hot.com');
 		$this->db->select("*");
 		$this->db->where_in('usersId',$json);
 		$this->db->or_where('usersId',$_SESSION['result']);
 		$this->db->or_where('privacy','public');
-		//$this->db->get('myTable');
-  //       $this->db->where('usersId',$_SESSION['result']);
-  //       $this->db->or_where('privacy','public');
-  // //       $sub = $this->subquery->start_subquery('where_in');
-		// // $sub->SELECT('reciever')->FROM('friendlist');
-		// // $this->subquery->end_subquery('usersId', true);
 		$query = $this->db->get('newsfeed');
 		echo $query->num_rows;
 		return true;
-        //while ($row = $query->result_array()){
-        	//echo $row['fname'];
-    	//}
 
-		// $query='Select username, sender, reciever, usersId, status FROM users JOIN friendlist ON username = sender JOIN newsfeed ON sender = usersId
-		// where username = '.$userid.' AND status = "ok"';
-
-		// $result=$this->db->query($query);
-		// return $result;
 
 	}
 }

@@ -44,7 +44,7 @@
 <div class = "menubar">
 	<div class = "wrapper">
 		<ul id="menu">
-			<li><a href="#">Home</a></li>
+			<li><a href="<?php base_url('index.php/login/login/newsfeed')?>">Home</a></li>
 			<li><a href="<?php base_url('index.php/login/login/after')?>">Profile</a>
 				<ul id = "drop">
 					<li><a href="#">Claim Kandi</a></li>

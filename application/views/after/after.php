@@ -6,15 +6,19 @@
 	<div class = "profilecard">
 		<?php   
 		session_start();
-		$sql = "Select * FROM users WHERE username = '"
-		.$_SESSION['result']."'";
-		$res = mysql_query($sql);
 
-		if /* or while */ ($row = mysql_fetch_assoc($res)) {
-			$fname = $row['fname'];
-			$lname = $row['lname'];
-			$fulltarget = $row['Picture'];
+		$this->db->where('username',$_SESSION['result']);
+		$query=$this->db->get('users');
+		if($query->num_rows>0)
+		{
+			foreach ($query->result_array() as $row)
+			{
+				$fname = $row['fname'];
+				$lname = $row['lname'];
+				$fulltarget = $row['Picture'];
+			}
 		}
+
 		?>
 		<div class = "Profilename1">
 			<?php echo $fname;?> <?php echo $lname;?> 
@@ -35,15 +39,9 @@
 			}
 			echo "<img src='$fulltarget' class = 'pp'>";?>
 		</div>
-
-<!-- 			<div class = "Profilename2">
-			    <?php echo $lname;?>
-			</div> -->
-			
-
-			<div class = "dpchange">
-				<a href = "<?php echo base_url('/index.php/login/login/imageupload')?>"><button class="btn-tertiary" type="submit" id="btn-submit"><div>Change profile picture</div></button></a>
-			</div>
+		<div class = "dpchange">
+			<a href = "<?php echo base_url('/index.php/login/login/imageupload')?>"><button class="btn-tertiary" type="submit" id="btn-submit"><div>Change profile picture</div></button></a>
 		</div>
-	</body>
-	</html>
+	</div>
+</body>
+</html>

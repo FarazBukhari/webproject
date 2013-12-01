@@ -28,7 +28,7 @@
 
 <body>
     <div id="a1">
-        <form action="upload_file.php" name="frm" method="post" enctype="multipart/form-data">
+        <form action="<?php echo base_url('index.php/login/login/imgupload');?>" name="frm" method="post" enctype="multipart/form-data">
 
 
         <!-- <input type="file" name="img" /><br />

@@ -11,7 +11,8 @@
 	position: relative;
 	width: 646px;
 	height: 100px;
-	margin-top: 15px;
+	margin-top: 1px;
+	background-color: white;
 }
 
 .abcd{
@@ -88,13 +89,13 @@
 
 }
 
-.bigdiv{
+.feed{
 	position: absolute;
-	background-color: white;
 	width: 646px;
 	height: auto;
-	top: 250px;
+	top: 224px;
 	left: 200px;
+	margin-bottom: 50px;
 }
 
 .new-miniprofile-container{
@@ -116,9 +117,9 @@
 }
 
 .footer{
-	position: relative;
-	top: 10px;
-	left: 200px;
+	position: absolute;
+	margin-top: 40px;
+	left: 0px;
 }
 
 .f1{

@@ -86,10 +86,10 @@ if(isset($_POST['sub']))
 			echo "Failed to connect to mysql". mysqli_connect_error();
 		}
 
-		$sql="update users 
-		set Picture= '$fulltarget'
-		where username='$result'";
-
+		//$sql="update users set Picture= '$fulltarget' where username='$result'";
+		$this->db->where('username', $result);
+		$this->db->set('Picture', $fulltarget);
+		$this->db->update('users');
 
 
 		if (!mysqli_query($con,$sql))
