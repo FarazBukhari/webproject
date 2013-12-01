@@ -160,15 +160,17 @@ a.logo1:active {
 	margin-top: 25px;
 	margin-left: 190px;
 	width: 646px;
-	height: 240px;
+	height: auto;
 }
 
+
 .Profilename1{
-	height: 26px;
+	height: 226px;
 	width: 405px;
-	position: absolute;
-	margin-top: 15px;
-	margin-left: 220px;
+	position: relative;
+	margin-top: 10px;
+	margin-left: 20px;
+	padding-bottom: 20px;
 	font-family: arial;
 	font-weight: bold;
 	font-size: 25px;
@@ -182,8 +184,8 @@ a.logo1:active {
 }
 
 .pp{
-	position: absolute;
-	margin-top: 10px;
+	position: relative;
+	margin-top: 22.5px;
 	margin-bottom: 20px;
 	height: 200px;
 	width: 200px;
@@ -348,93 +350,294 @@ a.logo1:active {
 	white-space: nowrap;
 }
 
-.menubar{
-	position: absolute;
-	background-color: #1a1a1a;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1a1a1a), color-stop(100%, #303030));
-	background-image: -webkit-linear-gradient(top, #1a1a1a 0%,#303030 100%);
-	background-image: -moz-linear-gradient(top, #1a1a1a 0%,#303030 100%);
-	background-image: -o-linear-gradient(top, #1a1a1a 0%,#303030 100%);
-	background-image: linear-gradient(top, #1a1a1a 0%,#303030 100%);
-	z-index: 1;
-	top: 40px;
-	height: 29px;
-	width: 100%;
+.footer{
+	position: relative;
+	top: 10px;
+	left: 200px;
 }
 
-.wrapper{
-	position: relative;
-	width: 974px;
-	height: 29px;
-	margin-left: 187.5;
-	margin-right: 187.5;
-	font-size: 15px;
-	color: white;
+.f1{
+	width: 85px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
 }
-
-#menu {
-	position: relative;
-	margin:0 auto;
-	display: inline-block;
-	list-style:none;
-	padding:0;
-	border-top:1 solid #ccc;
-	border-left:1 solid #ccc;
-	border-bottom:1 solid #ccc;
+.hc{
+	color: #0077B5;
 	text-decoration: none;
-	color: white;
+	font-size: 13px;
+	font-family: arial;
+	font-weight: bold;
+	
+	
 }
 
-#menu li {
-	float: left;
-	height: 28px;
-
+a.hc:hover{
+	text-decoration: underline;
 }
 
-#drop{
-	background-color: #1a1a1a;
-}
-
-#menu li a {
-	display:block;
-	padding-left:10px;
-	padding-right: 10px;
-	text-decoration:none;
-	color: #D7D7D7;
-	height: 28px;
-
-}   
-
-#menu li a:hover {
-	color:#2b8dcb;
-	background-color: #1a1a1a;
-	height: auto;
-	width: 203;
-}
-
-#menu, #menu ul {
-	margin:0 auto;
-	padding:0;
-	height: 28px;
-	width: 203px;
-}
-#menu li {
-	float: left;
-	position: relative;
-	list-style: none;
-	padding-top: 9px;
-	/*padding-bottom: 7px;*/
-}
-
-#menu > li:hover > ul {
-	display: block;
-}
-#menu > li > ul {
-	display: none;
+.f2{
 	position: absolute;
-	height: 28px;
+	left: 95px;
+	top:0px;
+	width: 42px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
 }
-#menu li a {
-	white-space: nowrap;
-	height: 28px;
+
+.fl{
+	color: #0077B5;
+	text-decoration: none;
+	font-size: 13px;
+	font-family: arial;
+}
+
+a.fl:hover{
+	text-decoration: underline;
+}
+
+.f3{
+	position: absolute;
+	left: 145px;
+	top:0px;
+	width: 42px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f4{
+	position: absolute;
+	left: 195px;
+	top:0px;
+	width: 35px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f5{
+	position: absolute;
+	left: 240px;
+	top:0px;
+	width: 50px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f6{
+	position: absolute;
+	left: 300px;
+	top:0px;
+	width: 70px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f7{
+	position: absolute;
+	left: 380px;
+	top:0px;
+	width: 100px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f8{
+	position: absolute;
+	left: 490px;
+	top:0px;
+	width: 40px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f9{
+	position: absolute;
+	left: 540px;
+	top:0px;
+	width: 50px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f10{
+	position: absolute;
+	left: 600px;
+	top:0px;
+	width: 70px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f11{
+	position: absolute;
+	left: 680px;
+	top:0px;
+	width: 70px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f12{
+	position: absolute;
+	left: 760px;
+	top:0px;
+	width: 65px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f13{
+	position: absolute;
+	left: 835px;
+	top:0px;
+	
+}
+
+.fl1{
+	color: #0077B5;
+	text-decoration: none;
+	font-size: 13px;
+	font-family: arial;
+}
+
+a.fl1:hover{
+	text-decoration: underline;
+}
+
+.f14{
+	position: absolute;
+	left: 0px;
+	top:25px;
+	width: 105px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f15{
+	position: absolute;
+	left: 115px;
+	top:25px;
+	width: 125px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f16{
+	position: absolute;
+	left: 250px;
+	top:25px;
+	width: 85px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f17{
+	position: absolute;
+	left: 345px;
+	top:25px;
+	width: 90px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f18{
+	position: absolute;
+	left: 445px;
+	top:25px;
+	width: 120px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f19{
+	position: absolute;
+	left: 575px;
+	top:25px;
+	width: 105px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f20{
+	position: absolute;
+	left: 690px;
+	top:25px;
+	width: 200px;
+	
+}
+
+.f21{
+	position: absolute;;
+	top:50px;
+	color: #666;
+	font-family: arial;
+	width: 115px;
+	font-size: 13px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f22{
+	position: absolute;
+	left: 125px;
+	top:50px;
+	width: 100px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f23{
+	position: absolute;
+	left: 235px;
+	top:50px;
+	width: 90px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f24{
+	position: absolute;
+	left: 335px;
+	top:50px;
+	width: 140px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+
+.f25{
+	position: absolute;
+	left: 485px;
+	top:50px;
+	width: 90px;
+	border-right: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px; 
+}
+.f26{
+	position: absolute;
+	left: 585px;
+	top:50px;
+	width: 200px;
+	
 }

@@ -61,6 +61,7 @@
                             <div class="classname">
                                     <!-- <h1>
                                         <?php
+                                            
                                             $fulltarget = $_SESSION['target'];
                                             echo "<img src='$fulltarget' width = '200px'>";
                                         
