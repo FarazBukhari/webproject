@@ -5,17 +5,17 @@
       </div>
       <div class="img2">
         <!--<img src="/images/img2.png">-->
-        <img src="/Codeigniter-bootstrap--master/assets/img/img2.png"></img>
+        <img src="/Project/assets/img/img2.png"></img>
       </div>
       <div class="bod3">Stay informed about your contacts and industry
       </div>
       <div class="img3">
-        <img src="/Codeigniter-bootstrap--master/assets/img/img3.png"></img>
+        <img src="/Project/assets/img/img3.png"></img>
       </div>
       <div class="bod4">Find the people & knowledge you need to achieve your goals
       </div>
       <div class="img1">
-        <img src="/Codeigniter-bootstrap--master/assets/img/img1.png"></img>
+        <img src="/Project/assets/img/img1.png"></img>
       </div>
 
      <div class="bod5">Control your professional identity online

@@ -4,7 +4,7 @@
 				<div id="nav-primary">
 					<div class="wrapper">
 						<div class="logo" id="logo-linkedin">
-							<img src="/Codeigniter-bootstrap--master/assets/img/logo_linkedin.png" width="92" height="22" alt="LinkedIn">
+							<img src="/Project/assets/img/logo_linkedin.png" width="92" height="22" alt="LinkedIn">
 						</div>
 						<ul class="menu">
 							<li id="nav-primary-auth">

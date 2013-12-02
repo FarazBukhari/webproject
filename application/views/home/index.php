@@ -53,20 +53,52 @@
 
 
                 if($row1 = mysql_fetch_array($res1)){
-                   $thumb = $row1['Picture'];
-                   $fname = $row1['fname'];
-                   $lname = $row1['lname'];
-                   echo "<div class = 'newsfeed'>";
-                   echo "<img src='$thumb' class = 'picture'>";
-                   echo "<div class='abcd'>"; echo $fname; echo " "; echo $lname;
-                   echo "</div>";
-                   echo "<div class='abcde'>";
-                   echo $row['status'];
-                   echo "</div>";
-                   echo "</div>";
+				$thumb = $row1['Picture'];
+				$fname = $row1['fname'];
+				$lname = $row1['lname'];
+				echo "<div class = 'newsfeed'>";
+				echo "<div class = 'abcdef'>";
+				echo "<img src='$thumb' class = 'picture'>";
+				echo "<div class='abcd'>"; echo $fname; echo " "; echo $lname;
+				echo "</div>";
+				echo "<div class='abcde'>";
+				echo $row['status'];
+				echo "</div>";
+				echo "</div>";
+				
+
+			
+				?>
+				<div class = "commentbox">
+					<form action="<?php echo base_url('index.php/login/login/comment');echo "?username1=";echo $_SESSION['result']; echo "&cid="; echo $row['ID'];?>" method="post" novalidate="novalidate" id="login" class="ajax-form" data-jsenabled="check">
+						<?php
+						echo "<div class = 'comments'>";
+						$this->db->where('id', $row['ID']);
+
+						$tcomments = $this->db->get('comments');
+						if($tcomments->num_rows > 0){
+							foreach ($tcomments->result_array() as $row5){
+								echo "<div class = 'com'>";
+								echo "<img src='$fulltarget' class = 'compic'>" . $fname . " " . $lname . "  " . $row5['comment'];
+								echo "</div>";
+							}
+						}
+						echo "<textarea name='postComment'  rows='2' cols='40' class='comment-text' placeholder='Write a comment...''></textarea>";
+						echo "</div>";
+
+						echo "<div class = 'comment-button'>";
+						
+						echo "<input class='btn-tertiary' type='submit' id='btn-submit' value='Comment'></input>";
+						echo "</div></div>";
+						?>
+					</form>
+				</div>
+			<?php
+				
                }
            }
        }
+
        else{
             echo "<h3><Center>There was an error</Center></h3>";
         }

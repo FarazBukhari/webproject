@@ -18,7 +18,7 @@
     </div>
       <div class="logo">
       <a href="<?php echo base_url('index.php/login/login/index');?>" class="logo1">
-        <img src="/Codeigniter-bootstrap--master/assets/img/logo.png">
+        <img src="/Project/assets/img/logo.png">
       </a>
     </div>
   </div>

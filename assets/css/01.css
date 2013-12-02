@@ -6,7 +6,8 @@ body, html{
     font-size: 80%;
     line-height: 1.2;
     color: #000;
-    background-color: #E6E6E6;
+    background-image: url('../img/texture_grain_200x200_v2.png');
+    background-repeat:repeat;
     margin: 0;
 }
 

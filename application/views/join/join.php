@@ -11,7 +11,7 @@
 				<div id="nav-primary">
 					<div class="wrapper">
 						<div class="logo" id="logo-linkedin">
-							<img src="/Codeigniter-bootstrap--master/assets/img/logo_linkedin.png" width="92" height="22" alt="LinkedIn">
+							<img src="/Project/assets/img/logo_linkedin.png" width="92" height="22" alt="LinkedIn">
 						</div>
 						<ul class="menu">
 							<li id="nav-primary-auth">
@@ -35,7 +35,7 @@
 							To join LinkedIn, sign up below...it's free!
 						</h1>
 						<div class = "arrow">
-							<img src = "/Codeigniter-bootstrap--master/assets/img/bg_arrow_foursided_blue.png" alt = "arroww" height= "16" width= "32">
+							<img src = "/Project/assets/img/bg_arrow_foursided_blue.png" alt = "arroww" height= "16" width= "32">
 						</div>
 					</div>
 					<div id="content">

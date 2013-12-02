@@ -134,7 +134,7 @@
             <a href="<?php echo base_url('index.php/login/login/index');?>" class="fl1">Title Directory</a>
         </div>
         <div class="f21">
-            <img src= "/Codeigniter-bootstrap--master/assets/img/foot.png">&#169; 2013
+            <img src= "/Project/assets/img/foot.png">&#169; 2013
         </div>
         <div class="f22">
             <a href="<?php echo base_url('index.php/login/login/agreement');?>" class="fl1">User Agreement</a>
