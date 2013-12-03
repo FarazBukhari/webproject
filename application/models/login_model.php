@@ -96,9 +96,7 @@ class Login_model extends CI_Model{
 				$this->db->set('Picture', $fulltarget);
 				$this->db->update('users');
 
-
-
-				header("Location: http://localhost:8080/Codeigniter-bootstrap--master/index.php/login/login/after");
+				header("Location: echo base_url('index.php/login/login/after')";
 
 
 			}
