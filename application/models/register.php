@@ -60,7 +60,7 @@ function registration1(){
 	
 	function register_user_details_image($path = null)
 	    {
-	    	include "upload_file.php";
+	    	//include "upload_file.php";
 	    	$username = $this->security->xss_clean($this->input->post('username'));
 			$this->db->select('*');
 			$this->db->from('users');
