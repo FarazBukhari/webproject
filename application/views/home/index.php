@@ -124,8 +124,8 @@
 
                      // document.getElementById('img-src').src = null;
                      $('#feed').replaceWith(blu);
-                     $.embedly.defaults.key = '202cefe06a3b4346af0b1620d84a8ac9';
-                     $('a').embedly();
+                     // $.embedly.defaults.key = '202cefe06a3b4346af0b1620d84a8ac9';
+                     // $('a').embedly();
                      $('#postText-postModuleForm').val("");
                      
 
@@ -133,10 +133,10 @@
              });
        }
 
-       $(function(){
-       	$.embedly.defaults.key = '202cefe06a3b4346af0b1620d84a8ac9';
-       	$('a').embedly();
-       });
+       // $(function(){
+       // 	$.embedly.defaults.key = '202cefe06a3b4346af0b1620d84a8ac9';
+       // 	$('a').embedly();
+       // });
        
        function validateUrl(url) { 
        	var pattern = "(http://)?(([0-9a-z_!'().&=$%-]: )?[0-9a-z_!'().&=$%-]@)?(([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-z_!'()-]\.)([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\.[a-z]{2,6})(:[0-9]{1,4})?((/?)|(/[0-9a-z_!*'().;?:@&=$,%#-])/?)$";
