@@ -105,7 +105,7 @@ class Login_model extends CI_Model{
 
 
 
-				header("Location: <?php echo base_url('index.php/login/login/after');?>");
+			
 				
 
 
@@ -136,7 +136,7 @@ class Login_model extends CI_Model{
 		$data['usersId'] = $_SESSION['result'];
 		$data['time'] = $date;
 		$data['status'] = $_SESSION['status'];
-		$data['type'] = $_SESSION['type'];
+		$data['type'] = "text";
 		$data['privacy'] = $_SESSION['privacy'];
 
 		$this->db->insert('newsfeed', $data);

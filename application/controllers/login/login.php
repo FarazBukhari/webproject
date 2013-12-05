@@ -243,7 +243,7 @@ class Login extends CI_Controller{
 		session_start();
 		$_SESSION['status'] = $_POST['postText'];
 		$_SESSION['privacy'] = $_POST['privacy'];
-		$_SESSION['type']=$_POST['type1'];
+		//$_SESSION['type']=$_POST['type1'];
 		$this->load->model('login_model');
 		$result = $this->login_model->newsfeed();
 
