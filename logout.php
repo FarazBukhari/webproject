@@ -7,6 +7,5 @@
 	die;
 	// session_destroy();
 	// header("Location: http://localhost:8080/Codeigniter-bootstrap--master/index.php/login/login/after");
-
 	// exit;
 ?>

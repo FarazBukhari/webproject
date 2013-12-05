@@ -8,13 +8,14 @@ body{
 	position: absolute;
 	height: 560px;
 	width: 100%;
-	top: 80px;
+	top: 70px;
 }
 
 .chapati{
 	position: absolute;
-	top: 50px;
+	
 	left: 200px;
+	background-color: white;
 	width: 500px;
 }
 
@@ -61,14 +62,14 @@ body{
 	padding-left: 12px;
 	padding-top: 0px;
 	margin-left: 11px;
-	top: 0px;
+	top: 30px;
 	height: auto;
 	width: 550px;
 	padding-bottom: 10px;
 
 }
 
-ul
+ul#nav-secondary
 {
 	list-style-type:none;
 	margin: 0px;
@@ -125,16 +126,47 @@ h1{
 }
 
 #main-options{
+	text-decoration: none;
 	width: 439px;
 	height: 114px;
 }
 
-li{
+li#nav-invite-contacts{
 	width: 419px;
 	height: 19px;
 }
 
-li label{
+li#nav-invite-contacts label{
+	top: 10px;
+	padding-left: 20px;
+}
+
+li#nav-colleagues{
+	width: 419px;
+	height: 19px;
+}
+
+li#nav-colleagues label{
+	top: 10px;
+	padding-left: 20px;
+}
+
+li#nav-classmates{
+	width: 419px;
+	height: 19px;
+}
+
+li#nav-classmates label{
+	top: 10px;
+	padding-left: 20px;
+}
+
+li#nav-pymk{
+	width: 419px;
+	height: 19px;
+}
+
+li#nav-pymk label{
 	top: 10px;
 	padding-left: 20px;
 }
@@ -188,6 +220,7 @@ textarea#greeting-iweReconnect{
 #l1{
 	position: absolute;
 	top: 2px;
+	left: 20px;
 }
 
 .d2{
@@ -198,6 +231,11 @@ textarea#greeting-iweReconnect{
 
 }
 
+.f123{
+	position: absolute;
+	top: 0px;
+	left: 5px;
+}
 .d3{
 	position: absolute;
 	top: 115px;

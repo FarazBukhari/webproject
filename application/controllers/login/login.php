@@ -82,7 +82,7 @@ class Login extends CI_Controller{
 	}
 	public function agreement()
 	{
-		$data['heading'] = "User Agreement";
+		$data['heading'] = "Countries";
 		$this->load->view('common/header',$data);
 		$this->load->view('common/header1',$data);
 		$this->load->view('agreement/agreement', $data);	
@@ -126,6 +126,8 @@ class Login extends CI_Controller{
 			$this->load->view('after/after', $data);
 		}
 		else{
+			$this->load->model('login_model');
+			$res1 = $this->login_model->getdata();
 			$this->load->view('profile/profile', $data);
 		}
 	}
@@ -134,6 +136,8 @@ class Login extends CI_Controller{
 	{
 		session_start();
 		$data['heading'] = "Notifications";
+		$this->load->model('login_model');
+		$res1 = $this->login_model->notify();
 		$this->load->view('common/header',$data);
 		$this->load->view('common/login-header',$data);
 		$this->load->view('notification/notification', $data);
@@ -144,6 +148,8 @@ class Login extends CI_Controller{
 	public function requests(){
 		session_start();
 		$data['heading'] = "Friend Requests";
+		$this->load->model('login_model');
+		$res1 = $this->login_model->displayreq();
 		$this->load->view('common/header',$data);
 		$this->load->view('common/login-header',$data);
 		$this->load->view('notification/requests', $data);
@@ -152,10 +158,11 @@ class Login extends CI_Controller{
 
 	public function search1()
 	{
+		session_start();
 		$this->load->model('register');
 		$fname=$this->register->registration1();
-		session_start();
-		$_SESSION['fname']=$fname;
+		
+		//$_SESSION['fname']=$fname;
 		redirect('login/login/search','refresh');
 	}
 
@@ -179,6 +186,10 @@ class Login extends CI_Controller{
 	// If user did validate, 
 	// Send them to members area
 			$_SESSION['result'] = $result;
+			$this->load->model('login_model');
+			$res1 = $this->login_model->getNewsFeed1();
+			$this->load->model('login_model');
+			$result = $this->login_model->comment1();
 			redirect('login/login/imageupload','refresh');
 		}
 
@@ -200,6 +211,17 @@ class Login extends CI_Controller{
 	public function imgupload(){
 		$this->load->model('login_model');
 		$r = $this->login_model->imgup();
+		$this->load->model('login_model');
+		$res1 = $this->login_model->getNewsFeed1();
+		$this->load->model('login_model');
+		$result = $this->login_model->comment1();
+
+	}
+
+		public function imgupload1(){
+		$this->load->model('login_model');
+		$r = $this->login_model->imgup1();
+		echo $r;
 
 	}
 	public function acceptinvite(){
@@ -220,16 +242,17 @@ class Login extends CI_Controller{
 		session_start();
 		$_SESSION['status'] = $_POST['postText'];
 		$_SESSION['privacy'] = $_POST['privacy'];
+		$_SESSION['type']=$_POST['type1'];
 		$this->load->model('login_model');
 		$result = $this->login_model->newsfeed();
 
 		if($result){
-			//$this->load->model('login_model');
-			//$res1 = $this->login_model->getNewsFeed1();
-			redirect('login/login/index1','refresh');
+			$this->load->model('login_model');
+			$res1 = $this->login_model->getNewsFeed1();
+			$this->load->view('home/feed-update');
 		}
 		else{
-			echo "Could not post status";
+			echo "<Center><p>Could not post status</p></Center>";
 		}
 	}
 
@@ -241,7 +264,9 @@ class Login extends CI_Controller{
 		$this->load->model('login_model');
 		$result = $this->login_model->comment();
 		if($result){
-			redirect('login/login/index1', 'refresh');
+			$this->load->model('login_model');
+			$result = $this->login_model->comment1();
+			redirect('login/login/index1');
 		}
 		else{
 			echo "Could not post comment";
@@ -265,6 +290,10 @@ class Login extends CI_Controller{
 	// Send them to members area
 
 			$_SESSION['result'] = $result;
+			$this->load->model('login_model');
+			$res1 = $this->login_model->getNewsFeed1();
+			$this->load->model('login_model');
+			$result = $this->login_model->comment1();
 			redirect('login/login/index1','refresh');
 		}		
 	}

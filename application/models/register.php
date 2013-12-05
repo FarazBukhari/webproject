@@ -15,7 +15,8 @@ class Register extends CI_Model{
 			//$data['value']=true;
 
 			$username = $this->security->xss_clean($this->input->post('email'));
-			
+			$fname= $this->security->xss_clean($this->input->post('firstName'));
+			$lname = $this->security->xss_clean($this->input->post('lastName'));
 			$this->db->select('username');
 			$this->db->where('username',$data['username']);
     		$query = $this->db->get('users');
@@ -29,20 +30,21 @@ class Register extends CI_Model{
 			else
 			{
 			$this->db->insert('users', $data);
-			$userid = mysql_insert_id();
-			$key = $data['username'] . date('mY');
-			$key = md5($key);
-			$email=$data['username'];
-			$confirm = mysql_query("INSERT INTO `confirm` VALUES(NULL,'$userid','$key','$email')"); 
-			if($confirm){
-				$info ['username'] = $email;  
-    			$info ['key'] = $key;
-    			$info ['value'] = true;
-    			$info ['username'] = $email;
-    			return $info;
+			// $userid = mysql_insert_id();
+			// $key = $data['username'] . date('mY');
+			// $key = md5($key);
+			// $email=$data['username'];
+			// $confirm = mysql_query("INSERT INTO `confirm` VALUES(NULL,'$userid','$key','$email')"); 
+			// if($confirm){
+			// 	$info ['username'] = $email;  
+   //  			$info ['key'] = $key;
+   //  			$info ['value'] = true;
+   //  			$info ['username'] = $email;
+   //  			return $info;
     			
-			}  
-
+			//}  
+			$_SESSION['fname']=$fname;
+			$_SESSION['lname']=$lname;
 			return $username;
 		}
 
@@ -53,14 +55,50 @@ function registration1(){
 		$query = $this->db->get('users');
 
 
-	    	$fname= $this->security->xss_clean($this->input->post('name'));
-			return $fname;
+	    	$name= $this->security->xss_clean($this->input->post('name'));
+
+	    	 if(preg_match('/\s/',$name) == 1){
+	    	 	$words = explode(" ", $name);
+            	$this->db->where('fname', $words[0]);
+            	$this->db->where('lname', $words[1]);
+            	$this->db->or_like('fname', $words[0]);
+                $this->db->or_like('lname', $words[1]);
+                $query = $this->db->get('users');
+
+               
+	    	 }
+
+	    	else if(preg_match('/\s/',$name) == 0){
+	    	$this->db->where('fname', $name);
+            $this->db->or_where('lname', $name);
+            $this->db->or_like('fname', $name);
+            $this->db->or_like('lname', $name);
+
+            // Run the query
+            $query = $this->db->get('users');
+	    	}
+
+	    	$row = array();
+			$row = $query->row_array();
+			$array = array();
+			$i = 0;
+			foreach ($query->result() as $row)
+			{
+				$array[$i]['fname'] = $row->fname;
+				$array[$i]['lname'] = $row->lname;
+				$array[$i]['Picture'] = $row->Picture;
+				$array[$i]['username']=$row->username;
+				$i++;	
+			}
+
+			$_SESSION['srch'] = $array;
+			//return $fname;
 		}
 
 	
 	function register_user_details_image($path = null)
 	    {
-	    	//include "upload_file.php";
+	    	include "upload_file.php";
 	    	$username = $this->security->xss_clean($this->input->post('username'));
 			$this->db->select('*');
 			$this->db->from('users');

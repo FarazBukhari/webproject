@@ -31,6 +31,13 @@ class Login_model extends CI_Model{
 				'validated' => true
 				);
 			$this->session->set_userdata($data);
+			$this->db->where('username',$username);
+			$query=$this->db->get('users');
+			foreach ($query->result_array() as $row){
+			$_SESSION['fname']=$row['fname'];
+			$_SESSION['lname']=$row['lname'];
+			$_SESSION['target']=$row['Picture'];
+		}
 			return $username;
 		}
 // If the previous process did not validate
@@ -96,7 +103,9 @@ class Login_model extends CI_Model{
 				$this->db->set('Picture', $fulltarget);
 				$this->db->update('users');
 
-				header("Location: echo base_url('index.php/login/login/after')";
+
+
+				header("Location: http://localhost:8080/Codeigniter-bootstrap--master/index.php/login/login/after");
 
 
 			}
@@ -126,7 +135,7 @@ class Login_model extends CI_Model{
 		$data['usersId'] = $_SESSION['result'];
 		$data['time'] = $date;
 		$data['status'] = $_SESSION['status'];
-		$data['type'] = "text";
+		$data['type'] = $_SESSION['type'];
 		$data['privacy'] = $_SESSION['privacy'];
 
 		$this->db->insert('newsfeed', $data);
@@ -154,33 +163,190 @@ class Login_model extends CI_Model{
 
 	public function getNewsFeed1(){
 
-		$table = 'users';
-		$this->db->select('reciever');
-		$this->db->where('sender',$_SESSION['result']);
-		$this->db->where('status','ok');
-		$query=$this->db->get('friendlist');
-		$row = $query->row_array();
-		$array = null; 
-		foreach ($query->result() as $row)
+			
+
+			$this->db->select('reciever');
+			$this->db->from('friendlist');
+			$this->db->where('sender', $_SESSION['result']);
+			$this->db->where('status', "ok");
+			
+			$query=$this->db->get();
+			$row = array();
+			$row = $query->row_array();
+			$j = 0;
+			//$reciever = array();
+			foreach ($query->result() as $row)
+			{
+				$reciever[$j] = $row->reciever;
+				$j++;
+			}
+//			
+			if($query->num_rows>0){
+			$this->db->join('users', 'newsfeed.usersId = users.username');
+			$this->db->where_in('newsfeed.usersId', $reciever);
+			$this->db->or_where('newsfeed.usersId', $_SESSION['result']);
+			$this->db->or_where('newsfeed.privacy', "public");
+			$this->db->order_by('newsfeed.time', "desc");
+			$q=$this->db->get('newsfeed');
+		}
+		else
 		{
-			$array[]=$row;
-
-
+			$this->db->join('users', 'newsfeed.usersId = users.username');
+			//$this->db->where_in('newsfeed.usersId', $reciever);
+			$this->db->where('newsfeed.usersId', $_SESSION['result']);
+			$this->db->or_where('newsfeed.privacy', "public");
+			$this->db->order_by('newsfeed.time', "desc");
+			$q=$this->db->get('newsfeed');
 		}
 
-		$json = json_encode($array);
-		echo $json;
-		$this->db->_reset_select();
-		$this->db->select("*");
-		$this->db->where_in('usersId',$json);
-		$this->db->or_where('usersId',$_SESSION['result']);
-		$this->db->or_where('privacy','public');
-		$query = $this->db->get('newsfeed');
-		echo $query->num_rows;
-		return true;
+				$row = array();
+				$row = $q->row_array();
+				$array = array();
+				$i = 0;
+				foreach ($q->result() as $row)
+				{
+					$array[$i]['ID'] = $row->ID;
+					$array[$i]['time'] = $row->time;
+					$array[$i]['status'] = $row->status;
+					$array[$i]['privacy'] = $row->privacy;
+					$array[$i]['usersId'] = $row->usersId;
+					$array[$i]['type'] = $row->type;
+					$array[$i]['fname'] = $row->fname;
+					$array[$i]['lname'] = $row->lname;
+					$array[$i]['Picture'] = $row->Picture;
+					$i++;	
+				}
 
+			$_SESSION['statuses'] = $array;
+	}
+
+	
+
+	public function comment(){
+		date_default_timezone_set('Asia/Karachi');
+		$date = date('Y-m-d H:i:s');
+		$data['userid'] = $_SESSION['b'];
+		$comments= $this->security->xss_clean($this->input->post('postComment'));
+		$data['id'] = $_SESSION['a'];
+		$data['time'] = $date;
+		$data['comment'] = $comments;
+		
+		// return $fname;
+		// echo $_SESSION['a'];
+		// echo $_SESSION['b'];
+
+		$this->db->insert('comments', $data);
+
+		
+		return true;
+	}
+
+	public function comment1()
+	{
+		$this->db->join('users', 'comments.userid = users.username');
+		$this->db->order_by('comments.time', "desc");
+		$query=$this->db->get('comments');
+
+		$row = array();
+				$row = $query->row_array();
+				$array = array();
+				$i = 0;
+				foreach ($query->result() as $row)
+				{
+					$array[$i]['id'] = $row->id;
+					$array[$i]['time'] = $row->time;
+					$array[$i]['comment'] = $row->comment;
+					
+					$array[$i]['userid'] = $row->userid;
+					$array[$i]['fname'] = $row->fname;
+					$array[$i]['lname'] = $row->lname;
+					$array[$i]['Picture'] = $row->Picture;
+					$i++;	
+				}
+
+			$_SESSION['comment'] = $array;
+	}
+
+	public function getdata(){
+		$this->db->where('username',$_SESSION['superusername']);
+		$query=$this->db->get('users');
+		foreach ($query->result_array() as $row){
+		$_SESSION['fname1']=$row['fname'];
+		$_SESSION['lname1']=$row['lname'];
+		$_SESSION['target1']=$row['Picture'];
+		}
+
+		$this->db->where('sender', $_SESSION['hello']);
+		$this->db->where('reciever',$_SESSION['superusername']);
+		$this->db->or_where('reciever', $_SESSION['hello']);
+		$this->db->where('sender',$_SESSION['superusername']);
+		$query1 = $this->db->get('friendlist');
+		$row = array();
+		$row = $query1->row_array();
+		$array = array();
+		$i = 0;
+		foreach ($query1->result() as $row){
+		$array[$i]['send'] = $row->sender;
+		$array[$i]['recieve'] = $row->reciever;
+		$array[$i]['status'] = $row->status;
+		$i++;
+		}
+
+		$_SESSION['frndship'] = $array;
 
 	}
+
+	public function notify(){
+
+		$this->db->where('reciever',$_SESSION['result']);
+		$this->db->where('status',"pending");
+		$q=$this->db->get('friendlist');
+		//$query = "Select * FROM friendlist WHERE reciever = '" .$_SESSION['result']."' AND status = 'pending'";
+		$_SESSION['num']=$q->num_rows();
+	}
+
+	public function displayreq(){
+			$this->db->select('sender');
+			$this->db->from('friendlist');
+			$this->db->where('reciever', $_SESSION['result']);
+			$this->db->where('status', "pending");
+			
+			$query=$this->db->get();
+			$row = array();
+			$row = $query->row_array();
+			$j = 0;
+			//$reciever = array();
+			foreach ($query->result() as $row)
+			{
+				$sender[$j]= $row->sender;
+				$j++;
+			}
+
+			$this->db->where_in('username',$sender);
+			$q=$this->db->get('users');
+
+			$row = array();
+			$row = $q->row_array();
+			$array = array();
+			$i = 0;
+			foreach ($q->result() as $row)
+				{
+					// echo  $row->username;
+					// echo $row->fname;
+					// echo $row->lname;
+					// echo $row->Picture;
+					// $i++;	
+					$array[$i]['username'] = $row->username;
+					$array[$i]['fname'] = $row->fname;
+					$array[$i]['lname'] = $row->lname;
+					$array[$i]['Picture'] = $row->Picture;
+					$i++;	
+				}
+
+			$_SESSION['disp'] = $array;
+
+	}
+
 }
 
 

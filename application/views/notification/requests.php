@@ -6,18 +6,22 @@
 
 		<div class = "profilecard">
 			<?php 
-			
-			$sql = "Select * FROM friendlist WHERE reciever = '" .$_SESSION['result']."' AND status = 'pending'";
-			$res = mysql_query($sql);
-			while ($row = mysql_fetch_array($res)) {
-	 				    $username = $row['sender'];
-	 				    $sql = "Select * FROM users WHERE username = '".$username."'";
-	 				    $res1 = mysql_query($sql);
-	 				    if /* or while */ ($row1 = mysql_fetch_assoc($res1)){
-	 				    	$fname=$row1['fname'];
-	 				    $lname = $row1['lname'];
+			//session_start();
+			// $sql = "Select * FROM friendlist WHERE reciever = '" .$_SESSION['result']."' AND status = 'pending'";
+			// $res = mysql_query($sql);
+			$dis=$_SESSION['disp'];
+			$i=0;
+			$sized=sizeof($dis);
+			while ($sized>0) {
+	 				    $username = $dis[$i]['username'];
+	 				    $fname=$dis[$i]['fname'];
+	 				    //$sql = "Select * FROM users WHERE username = '".$username."'";
+	 				    //$res1 = mysql_query($sql);
+	 				    //if /* or while */ ($row1 = mysql_fetch_assoc($res1)){
+	 				   // $fname=$$dis[$i]['fname'];
+	 				    $lname = $dis[$i]['lname'];
 	 				    
-	 				    $fulltarget = $row1['Picture'];
+	 				    $fulltarget = $dis[$i]['Picture'];
 	 				    
 	 				    echo "<div class = 'Profilename1'>";
    			    		echo "<img src='$fulltarget' class = 'pp'>";
@@ -25,7 +29,9 @@
  						
 
 						echo "</div></a>";
-					}
+						$i++;
+						$sized--;
+					//}
 
 
 			}

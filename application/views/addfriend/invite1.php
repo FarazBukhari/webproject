@@ -2,27 +2,16 @@
 
 <body>
 	<?php
-	$sql = "Select * FROM users WHERE username = '"
-	.$_GET['id1']."'";
-	$res = mysql_query($sql);
-	if /* or while */ ($row = mysql_fetch_assoc($res)) {
-		$fname = $row['fname'];
-		$lname = $row['lname'];
-		$fulltarget = $row['Picture'];
-	}
-
-	$sql1 = "Select * FROM users WHERE username = '"
-	.$_GET['id2']."'";
-	$res1 = mysql_query($sql1);
-	if /* or while */ ($row1 = mysql_fetch_assoc($res1)) {
-		$fname1 = $row1['fname'];
-		$lname1 = $row1['lname'];
-		$fulltarget1 = $row1['Picture'];
-	}
-
+		$fname = $_SESSION['fname'];
+		$lname = $_SESSION['lname'];
+		$fulltarget = $_SESSION['target'];
+	
+		$fname1=$_GET['fname'];
 
 	?>
-	<div class = "chapati">
+	
+	<div class="iwrite">
+		<div class = "chapati">
 		<ul id="nav-secondary">
 			<div class = "chapatai1">
 				<li id="nav-invite-contacts" class="chapati1">
@@ -42,8 +31,7 @@
 				<li id="nav-pymk" class="chapati5"><a href="/people/pymk?trk=frontier-tabs_connections-new_pymk"><span>View Sent Invitations</span></a></li>
 			</div>
 		</ul>
-	</div>
-	<div class="iwrite"><div class="iwrite-in">
+	</div><div class="iwrite-in">
 
 		<h1>Invite <strong><?php echo $fname1; ?></strong> to connect on LinkedIn</h1>
 		<div class="ipaper"><div class="ipaper-in">
@@ -53,7 +41,9 @@
 				<ul id="main-options">
 					<li>
 						<div class="d1">
-							<input type="radio" name="reason" value="IC" id="selector-IC-reason-iweReconnect" class="radio-btn-colleagues" ><label id="l1" for="selector-IC-reason-iweReconnect">Colleague</label>
+							<div class="f123">
+							<input type="radio" name="reason" value="IC" id="selector-IC-reason-iweReconnect" class="radio-btn-colleagues" >
+						</div><label id="l1" for="selector-IC-reason-iweReconnect">Colleague</label>
 							<div id="colleagues" class="form-wrapper" style="display: none;">
 								<span class="error" id="existingPosition-other-IC-reason-iweReconnect-error"></span>
 								<span id="colleagues-list">
@@ -97,7 +87,11 @@
 							<li>
 								<div class="d2">
 									<span class="error" id="selector-IE-reason-iweReconnect-error"></span>
+									<div class="f123">
 									<input type="radio" name="reason" value="IE" id="selector-IE-reason-iweReconnect" class="radio-btn classmates">
+									
+									
+									</div>
 									<label id="l1" for="selector-IE-reason-iweReconnect">Classmate</label>
 									<div id="classmates" class="form-wrapper" style="display: none;">
 
@@ -127,7 +121,8 @@
 									</li>
 									<li>
 										<div class="d3">
-											<input type="radio" name="reason" value="IB" id="selector-IB-reason-iweReconnect" class="radio-btn partners">
+											<div class="f123">
+											<input type="radio" name="reason" value="IB" id="selector-IB-reason-iweReconnect" class="radio-btn partners"></div>
 											<label  id="l1" for="selector-IB-reason-iweReconnect">We’ve done business together</label>
 											<div id="partners" class="form-wrapper" style="display: none;">
 												<span class="error" id="existingPosition-other-IB-reason-iweReconnect-error"></span>
@@ -173,13 +168,15 @@
 											<li>
 												<div class="d4" >
 													<span class="error" id="IF-reason-iweReconnect-error"></span>
-													<input type="radio" name="reason" value="IF" id="IF-reason-iweReconnect" class="radio-btn">
+													<div class="f123">
+													<input type="radio" name="reason" value="IF" id="IF-reason-iweReconnect" class="radio-btn"></div>
 													<label id="l1" for="IF-reason-iweReconnect">Friend</label>
 												</div></li>
 												<li>
 													<div class="d5">
 														<span class="error" id="selector-iweOther-reason-iweReconnect-error"></span>
-														<input type="radio" name="reason" value="iweOther" id="selector-iweOther-reason-iweReconnect" class="radio-btn other">
+														<div class="f123">
+														<input type="radio" name="reason" value="iweOther" id="selector-iweOther-reason-iweReconnect" class="radio-btn other"></div>
 														<label id="l1" for="selector-iweOther-reason-iweReconnect">Other</label>
 														<div id="other" class="form-wrapper" style="display: none;">
 															<strong><?php echo $fname1; ?></strong>’s email address:<br>
@@ -190,7 +187,9 @@
 
 													<li>
 														<div class="d6"><span class="error" id="dontKnow-reason-iweReconnect-error"></span>
+															<div class="f123">
 															<span id="dontknow-wrapper"><input type="radio" name="reason" value="dontKnow" id="dontKnow-reason-iweReconnect" class="radio-btn"></span>
+															</div>
 															<label id="l1" for="dontKnow-reason-iweReconnect">I don’t know <?php echo $fname1; ?></label>
 														</div></li>
 

@@ -7,17 +7,17 @@
 		<?php   
 		session_start();
 
-		$this->db->where('username',$_SESSION['result']);
-		$query=$this->db->get('users');
-		if($query->num_rows>0)
-		{
-			foreach ($query->result_array() as $row)
-			{
-				$fname = $row['fname'];
-				$lname = $row['lname'];
-				$fulltarget = $row['Picture'];
-			}
-		}
+		// $this->db->where('username',$_SESSION['result']);
+		// $query=$this->db->get('users');
+		// if($query->num_rows>0)
+		// {
+		// 	foreach ($query->result_array() as $row)
+		// 	{
+				$fname = $_SESSION['fname'];
+				$lname = $_SESSION['lname'];
+				$fulltarget = $_SESSION['target'];
+		// 	}
+		// }
 
 		?>
 		<div class = "Profilename1">

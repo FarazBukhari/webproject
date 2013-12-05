@@ -7,67 +7,29 @@
 
         <?php   
         session_start();
-        $name = $_SESSION['fname'];
-        if(preg_match('/\s/',$name) == 1){
-            $words = explode(" ", $name);
-            $this->db->where('fname', $words[0]);
-            $this->db->where('lname', $words[1]);
-
-            // Run the query
-            $query = $this->db->get('users');
-
-            // Let's check if there are any results
-            if($query->num_rows >= 1){
-                $this->db->LIKE('fname', $words[0]);
-                $this->db->LIKE('lname', $words[1]);
-                $q= $this->db->get('users');
-                foreach ($query->result_array() as $row)
-                {
-                    $fname = $row['fname'];
-                    $lname = $row['lname'];
-                    $fulltarget = $row['Picture'];
-                    $username = $row['username'];
-                    echo "<div class = 'Profilename1'>";
-                    echo "<img src='$fulltarget' class = 'pp'>";
-                    echo "  <a href="; echo base_url('index.php/login/login/profile');echo "?username=";echo $username; echo "&fname="; echo $fname;echo "&myid="; echo $_SESSION['result']; echo ">"; echo $fname; echo " "; echo $lname;
-                    echo "</div></a>";
-                }
-            }
-            else{
-                echo "<h3><Center>The User Does Not Exist</Center></h3>";
-            }
-
-
-        }
-
-        else if(preg_match('/\s/',$name) == 0){
-
-            $this->db->where('fname', $name);
-            $this->db->or_where('lname', $name);
-
-            // Run the query
-            $query = $this->db->get('users');
-            if($query->num_rows >= 1){
-                $this->db->LIKE('fname', $name);
-                $this->db->or_like('lname', $name);
-                $q= $this->db->get('users');
-                foreach ($query->result_array() as $row)
-                {
-                    $fname = $row['fname'];
-                    $lname = $row['lname'];
-                    $fulltarget = $row['Picture'];
-                    $username = $row['username'];
-                    echo "<div class = 'Profilename1'>";
-                    echo "<img src='$fulltarget' class = 'pp'>";
-                    echo "  <a href="; echo base_url('index.php/login/login/profile');echo "?username=";echo $username; echo "&fname="; echo $fname;echo "&myid="; echo $_SESSION['result']; echo ">"; echo $fname; echo " "; echo $lname;
-                    echo "</div></a>";
-                }
-            }
-
-            else{
-                echo "<h3><Center>The User Does Not Exist</Center></h3>";
+        $sresult = $_SESSION['srch'];
+        $size=sizeof($sresult);
+        if($size>0){
+            $i=0;
+            while($size>0)
+            {
+                $fname = $sresult[$i]['fname'];
+                $lname = $sresult[$i]['lname'];
+                $fulltarget = $sresult[$i]['Picture'];
+                $username = $sresult[$i]['username'];
+                echo "<div class = 'Profilename1'>";
+                echo "<img src='$fulltarget' class = 'pp'>";
+                echo "  <a href="; echo base_url('index.php/login/login/profile');echo "?username=";echo $username; echo "&fname="; echo $fname;echo "&myid="; echo $_SESSION['result']; echo ">"; echo $fname; echo " "; echo $lname;
+                echo "</div></a>";
+                $i++;
+                $size--;
             }
         }
+        else
+        {
+            echo "<h3><Center>The User Does Not Exist</Center></h3>";
+        }
+   
 
         ?>
 
@@ -134,7 +96,7 @@
             <a href="<?php echo base_url('index.php/login/login/index');?>" class="fl1">Title Directory</a>
         </div>
         <div class="f21">
-            <img src= "<?php echo base_url('/assets/img/foot.png');?>">&#169; 2013
+            <img src= "/Codeigniter-bootstrap--master/assets/img/foot.png">&#169; 2013
         </div>
         <div class="f22">
             <a href="<?php echo base_url('index.php/login/login/agreement');?>" class="fl1">User Agreement</a>

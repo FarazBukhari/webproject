@@ -26,10 +26,15 @@
 	position: absolute;
 	top: 35px;
 	left: 70px;
-	font-size: 18px;
 	height:auto;
+	font-size: 15px;
+	width:550px;
+	word-wrap: break-word;
 }
 
+a{
+	word-wrap: break-word;
+}
 .picture{
 	position: absolute;
 	height: 60px;
@@ -48,12 +53,17 @@
 }
 
 .abcdef{
-	height: 83px;
+	height: 140px;
 }
 
 .comments{
 	position: relative;
 
+}
+
+.thumb{
+	height: 35px;
+	width: 35px;
 }
 
 .com{

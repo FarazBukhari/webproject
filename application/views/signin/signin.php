@@ -21,7 +21,7 @@
     </div>
     <div class="logo">
       <a href="<?php echo base_url('index.php/login/login/index');?>" class="logo1">
-        <img src="<?php echo base_url('/assets/img/logo.png');?>"></img>
+        <img src="/Codeigniter-bootstrap--master/assets/img/logo.png"></img>
       </a>
     </div>
   </div>
@@ -46,7 +46,7 @@
   <div class="footer">
 
     <div id="f21">
-      <img src="<?php echo base_url('/assets/img/foot.png');?>"></img><a id="footid">&#169; 2013
+      <img src="/Codeigniter-bootstrap--master/assets/img/foot.png"></img><a id="footid">&#169; 2013
 
 
       <div class="f22">

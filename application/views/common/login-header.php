@@ -44,21 +44,12 @@
 <div class = "menubar">
 	<div class = "wrapper">
 		<ul id="menu">
-			<li><a href="<?php base_url('index.php/login/login/newsfeed')?>">Home</a></li>
-			<li><a href="<?php base_url('index.php/login/login/after')?>">Profile</a>
-				<ul id = "drop">
-					<li><a href="#">Claim Kandi</a></li>
-				</li>
-				<li><a href="#">Events</a>
-
-				</li>
-				<li><a href="#">Artists</a>
-
-				</li>
-				<li><a href="#">Community</a>
-				</li>
-				<li><a href="#">Merchandise</a></li>
-			</ul>
+			<li><a href="<?php echo base_url('index.php/login/login/index1')?>">Home</a></li>
+			<li><a href="<?php echo base_url('index.php/login/login/after')?>">Profile</a></li>
+			<li><a href="<?php echo base_url('index.php/login/login/index1')?>">Network</a></li>
+			<li><a href="<?php echo base_url('index.php/login/login/index1')?>">Jobs</a></li>
+			<li><a href="<?php echo base_url('index.php/login/login/index1')?>">Interest</a></li>
+			
 		</ul>
 	</div>
 </div>
