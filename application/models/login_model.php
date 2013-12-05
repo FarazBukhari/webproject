@@ -105,7 +105,8 @@ class Login_model extends CI_Model{
 
 
 
-				header("Location: http://localhost:8080/Codeigniter-bootstrap--master/index.php/login/login/after");
+				header("Location: <?php echo base_url('index.php/login/login/after');?>");
+				
 
 
 			}
