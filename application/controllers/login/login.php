@@ -215,6 +215,7 @@ class Login extends CI_Controller{
 		$res1 = $this->login_model->getNewsFeed1();
 		$this->load->model('login_model');
 		$result = $this->login_model->comment1();
+		redirect('login/login/newsfeed','refresh');
 
 	}
 
